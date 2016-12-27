@@ -1,0 +1,11 @@
+<h2>Log In</h2>
+<%= form_for User.new do |f| %>
+  <%= f.label :user_email %>
+  <%= f.text_field :email %>
+
+  <%= f.label :user_password %>
+  <%= f.password_field :password %>
+
+  <%= f.submit "Login to My Account" %>
+
+<% end %>
