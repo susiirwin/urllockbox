@@ -1,0 +1,11 @@
+<div>
+    <p>Link Title: <%= link.title %></p>
+    <p>Link URL: <%= link.url %></p>
+    <p>Read Status: <%= link.read %></p>
+    <% if link.read %>
+      <p><%= link_to "Mark as read", link.change_status %></p>
+
+    <% else %>
+      <p><%= link_to "Mark as unread", link.change_status %></p>
+    <% end %>
+</div>
