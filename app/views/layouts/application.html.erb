@@ -13,11 +13,10 @@
       <%= content_tag :div, msg, class: name %>
     <% end -%>
 
-  <% if current_user? %>
-    <%= link_to "Logout", logout_path %>
+  <% if current_user %>
+    Signed in as <%= current_user.name %> | <%= link_to "Logout", logout_path %>
   <% else %>
-    <%= link_to "Create Account", signup_path %>
-    <%= link_to "Login", login_path %>
+    <%= link_to "Create Account", signup_path %> | <%= link_to "Login", login_path %>
   <% end %>
 
   <%= yield %>
