@@ -1,12 +1,11 @@
 <%= form_for Link.new do |f| %>
-  <%= f.label :link_title %>
-  <%= f.text_field :title %>
+<p><%= f.label :link_title %>: <%= f.text_field :title %></p>
+<p><%= f.label :link_url %>: <%= f.text_field :url %></p>
 
-  <%= f.label :link_url %>
-  <%= f.text_field :url %>
-
-  <%= f.submit "Submit Link" %>
+<p><%= f.submit "Submit Link" %></p>
 <% end %>
 
+<% if current_user %>
 
 <%= render @links %>
+<% end %>
