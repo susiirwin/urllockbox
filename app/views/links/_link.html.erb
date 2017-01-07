@@ -3,10 +3,5 @@
     <p>Link URL: <%= link.url %></p>
     <p>Read Status: <%= link.read %></p>
     <%= link_to "Edit Link", edit_link_path(link.id) %>
-    <!-- <% if link.read %>
-      <p><%# link_to "Mark as read", link.change_status %></p>
-
-    <% else %>
-      <p><%# link_to "Mark as unread", link.change_status %></p>
-    <% end %> -->
+    <button class="Read-Button" data-url='<%= link.url %>'>Mark as Read</button>
 </div>
