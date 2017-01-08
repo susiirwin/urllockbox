@@ -85,6 +85,12 @@ function markRead(){
     data: {read: true},
     url: `api/v1/links/${id}`
   })
+  // THIS MAY BE A SOLUTION TO UPDATE HOTREADS
+  // .then($.ajax( {
+  //     method: 'POST',
+  //     data: {url: readLink},
+  //     url: "http://hotreads.herokuapp.com/links"
+  //   }))
   // then change button text to Mark as Unread and create a new function (markUnread) to send a new status - set to false
   .then($(`#link-${id} .Read-Button`).text('Mark as Unread'))
   .then($(`#link-${id} .link_read`).text('Read? true'))
