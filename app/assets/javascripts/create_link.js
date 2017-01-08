@@ -5,6 +5,7 @@ $(document).ready(function(){
   $newLinkTitle = $("#link_title");
   $newLinkUrl  = $("#link_url");
 
+
   $("#submit_link").on('click', createLink);
 
   displayExistingLinks();
@@ -63,7 +64,7 @@ function linkHTML(link) {if (link.read === false){
               <button class="Read-Button" data-id='${link.id}' data-url='${link.url}' >Mark as Read</button>
             </div>`
           } else {
-              return `<div class='link' data-id='${link.id}' id="link-${link.id}">
+              return `<div class='link read' data-id='${link.id}' id="link-${link.id}">
               <p class='link-title' contenteditable=true>${ link.title }</p>
               <p class='link-url' contenteditable=true>${ link.url }</p>
 
@@ -87,6 +88,7 @@ function markRead(){
   // then change button text to Mark as Unread and create a new function (markUnread) to send a new status - set to false
   .then($(`#link-${id} .Read-Button`).text('Mark as Unread'))
   .then($(`#link-${id} .link_read`).text('Read? true'))
+  .then($(`#link-${id}`).addClass('read'))
   .then(attachUnreadEvent(id))
 }
 
@@ -106,6 +108,7 @@ function markUnread(){
   // then change button text to Mark as Unread and create a new function (markUnread) to send a new status - set to false
   .then($(`#link-${id} .Read-Button`).text('Mark as Read'))
   .then($(`#link-${id} .link_read`).text('Read? false'))
+  .then($(`#link-${id}`).removeClass('read'))
   .then(attachReadEvent(id))
 }
 
