@@ -14,6 +14,12 @@ class Api::V1::LinksController < ApplicationController
     render json: links, status: 201
   end
 
+  def update
+    link = Link.find(params[:id])
+    link.update({read: params[:read]})
+    render json: link, status: 201
+  end
+
   private
 
   def link_params
