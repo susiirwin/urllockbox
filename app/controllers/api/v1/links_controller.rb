@@ -9,6 +9,11 @@ class Api::V1::LinksController < ApplicationController
     end
   end
 
+  def index
+    links = Link.all
+    render json: links, status: 201
+  end
+
   private
 
   def link_params

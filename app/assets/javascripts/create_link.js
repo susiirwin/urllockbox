@@ -6,12 +6,14 @@ $(document).ready(function(){
   $newLinkUrl  = $("#link_url");
 
   $("#submit_link").on('click', createLink);
+
+  displayExistingLinks();
 })
 
 function createLink (event){
   event.preventDefault();
 
-  console.log("win")
+  // console.log("win")
 
   var link = getLinkData();
 
@@ -28,8 +30,18 @@ function getLinkData() {
 }
 
 function renderLink(link){
-  $("#links_list").append( linkHTML(link) )
-  // clearLink();
+  $("#links_list").prepend( linkHTML(link) )
+
+
+  clearLink();
+}
+
+function displayExistingLinks(){
+  // make a call to DB to get all links (index) and render those to the page. Make an API endpoint and update route to that endpoint to do this.
+  $.get("api/v1/links")
+  .then(function(links){
+    links.forEach(renderLink)
+  })
 }
 
 function linkHTML(link) {
@@ -55,5 +67,6 @@ function clearLink() {
 }
 
 function displayFailure(failureData){
-  console.log("FAILED attempt to create new Link: " + failureData.responseText);
+  // changed from console.log to alert so user gets a popup
+  alert ("FAILED attempt to create new Link: " + failureData.responseText);
 }
